@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material'
 import React from 'react'
 
-export const InputField = ({ type, label, name, multiline, size, rows, placeholder, variant}) => {
+export const InputField = ({ type, label, name, multiline, size, rows, placeholder, variant, registration, error, helperText}) => {
   return (
     <>
       <TextField
@@ -13,6 +13,9 @@ export const InputField = ({ type, label, name, multiline, size, rows, placehold
         placeholder={placeholder}
         variant={variant}
         size={size}
+        {...registration}
+        error={error}
+        helperText={helperText}
       />
     </>
   )
