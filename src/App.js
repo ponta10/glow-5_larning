@@ -57,7 +57,7 @@ function App() {
         name="fruit" 
       />
       <SelectField 
-        items={["にんじん","だいこん","きゃべつ","れんこん"]} 
+        items={["にんじん","だいこん","きゃべつ","れんこん","じゃがいも"]} 
         name="vegetable" 
         defaultValue="にんじん" 
         label="野菜"
