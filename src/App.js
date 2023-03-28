@@ -53,11 +53,11 @@ function App() {
   return (
     <Stack spacing={2} sx={{p: 4}} >
       <RadioField 
-        items={["りんご","みかん"]} 
+        items={["りんご","みかん","いちご"]} 
         name="fruit" 
       />
       <SelectField 
-        items={["にんじん","だいこん"]} 
+        items={["にんじん","だいこん","きゃべつ","れんこん"]} 
         name="vegetable" 
         defaultValue="にんじん" 
         label="野菜"
