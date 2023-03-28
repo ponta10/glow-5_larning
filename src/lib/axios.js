@@ -72,4 +72,23 @@ export const postApi = (url, params) => {
   return res;
 };
 
+
+export const deleteApi = (url, params) => {
+    console.log(url, params);
+  
+    const res = axios.delete(
+      url,
+      params,
+      {
+      //   headers: {
+      //     Authorization: `Bearer ${accessToken}`,
+      //   },
+      },
+    );
+  
+    console.log('api response', res);
+  
+    return res;
+  };
+
 export default axios;
