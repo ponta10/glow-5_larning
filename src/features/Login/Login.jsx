@@ -3,11 +3,14 @@ import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import { useAuth } from '../../lib/auth';
 import { useSnackbar } from 'notistack';
+import LoadingButton from '@mui/lab/LoadingButton';
+import { BASE_URL } from '../../utils/const';
 
 export const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const { loginFn } = useAuth();
     const { enqueueSnackbar } = useSnackbar();
@@ -15,7 +18,8 @@ export const Login = () => {
     const handleSubmit = async e => {
       e.preventDefault();
       try {
-        const response = await axios.post('http://localhost/api/login', {
+        setLoading(true);
+        const response = await axios.post(`${BASE_URL}/login`, {
           email,
           password,
         });
@@ -30,6 +34,8 @@ export const Login = () => {
         // エラーメッセージを受け取り、表示
         enqueueSnackbar('ログインに失敗しました！', { variant: 'error' });
         setErrors(error.response.data);
+    }finally{
+      setLoading(false);
     };
 }
   
@@ -52,7 +58,15 @@ export const Login = () => {
           placeholder="Password"
           required
         />
-        <button type="submit">Login</button>
+              <LoadingButton
+                fullWidth
+                sx={{ mt: 3, mb: 2 }}
+                variant="contained"
+                type="submit"
+                loading={loading}
+              >
+                ログイン
+              </LoadingButton>
       </form>
     );
   }

@@ -13,6 +13,15 @@ axios.interceptors.response.use(
   },
 );
 
+const apiClient = axios.create({
+  baseURL: 'http://localhost/api',
+});
+
+const token = document.head.querySelector('meta[name="csrf-token"]');
+if (token) {
+  apiClient.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+}
+
 let accessToken = '';
 
 export const setApiToken = (token) => {

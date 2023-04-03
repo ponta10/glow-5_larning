@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
 import { useAuth } from '../../lib/auth';
+import { BASE_URL } from '../../utils/const';
 
 export const Register = () => {
     const [name, setName] = useState('');
@@ -15,7 +16,7 @@ export const Register = () => {
       e.preventDefault();
       try {
         if(password_confirmation === password){
-            const response = await axios.post('http://localhost/api/register', {
+            const response = await axios.post(`${BASE_URL}/register`, {
                 name,
                 email,
                 password,

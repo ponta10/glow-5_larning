@@ -13,6 +13,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { styled } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
+import { BASE_URL } from '../../utils/const';
 
 export const Top = () => {
   const [data, setData] = useState([]);
@@ -29,40 +30,40 @@ export const Top = () => {
     }
   )
 
-  const getTodo = async () => {
-    try{
-    const res = await getApi("http://localhost/api/todo");
-    setData(res);
-    }catch(err){
-        throw err
-    }finally{
-        setLoading(false); // 処理が完了したらローディングを非表示にする
-    }
-  }
+  // const getTodo = async () => {
+  //   try{
+  //   const res = await getApi(`${BASE_URL}/todo`);
+  //   setData(res);
+  //   }catch(err){
+  //       throw err
+  //   }finally{
+  //       setLoading(false); // 処理が完了したらローディングを非表示にする
+  //   }
+  // }
 
   const getUsers = async () => {
-    const res = await getApi("http://localhost/api/user");
+    const res = await getApi(`${BASE_URL}`);
     console.log(res);
     setUser(res);
   }
 
   useEffect(() => {
-    getTodo();
+    // getTodo();
     getUsers();
   }, []);
 
   const deleteTodo = async (id) => {
-    const res = await deleteApi(`http://localhost/api/todo/${id}`);
+    const res = await deleteApi(`${BASE_URL}/todo/${id}`);
     setData(res);
   }
 
   const showTodo = async (id) => {
-    const res = await getApi(`http://localhost/api/todo/${id}`);
+    const res = await getApi(`${BASE_URL}/todo/${id}`);
     setData(res);
   }
 
   const onSubmit = async (data) => {
-    const res = await postApi("http://localhost/api/todo",data);
+    const res = await postApi(`${BASE_URL}/todo`,data);
     setData(res);
   }
 
@@ -83,11 +84,11 @@ export const Top = () => {
     <Stack spacing={2} sx={{p: 4}} >
         {loading && <CustomLinearProgress />}
               <p>{user?.name}</p>
-      <ul>
+      {/* <ul>
         {data?.map((item) => (
             <li key={item.id} onClick={() => showTodo(item.id)}>{item.name}</li>
         ))}
-      </ul>
+      </ul> */}
       {/* <RadioField 
         items={["りんご","みかん","いちご"]} 
         name="fruit" 
