@@ -14,6 +14,7 @@ import { Register } from '../features/Register/Register';
 
 const { Top } = lazyImport(() => import('../features/Top/Top'), 'Top');
 const { Blog } = lazyImport(() => import('../features/Blog/Blog'), 'Blog');
+const { Test } = lazyImport(() => import('../features/Test/Test'), 'Test');
 
 function App() {
   return (
@@ -41,6 +42,7 @@ export function AppRoutes() {
       children: [
         { path: 'top', element: <Top /> },
         { path: 'blog', element: <Blog /> },
+        { path: 'test', element: <Test /> },
       ],
     },
   ];
@@ -57,7 +59,9 @@ export function AppRoutes() {
   ]
 
   const routes = user ? protectedRoutes : publicRoutes;
-  const element = useRoutes([...routes,...commonRoutes]);
+  // const element = useRoutes([...routes,...commonRoutes]);
+
+  const element = useRoutes([...protectedRoutes]);
 
   return <div>{element}</div>;
 }

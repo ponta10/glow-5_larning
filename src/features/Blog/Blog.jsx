@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { CustomButton } from '../../component/CustomButton';
+import { CustomButton } from '../../component/atoms/Form/CustomButton';
 import { useAuth } from '../../lib/auth';
 import { getApi } from '../../lib/axios';
 import { BASE_URL } from '../../utils/const';

@@ -1,10 +1,10 @@
-import { CustomButton } from '../../component/CustomButton';
-import { CheckBoxField } from '../../component/CheckBoxField';
-import { InputField } from '../../component/InputField';
-import { RadioField } from '../../component/RadioField';
-import { SelectField } from '../../component/SelectField';
+import { CustomButton } from '../../component/atoms/Form/CustomButton';
+import { CheckBoxField } from '../../component/atoms/Form/CheckBoxField';
+import { InputField } from '../../component/atoms/Form/InputField';
+import { RadioField } from '../../component/atoms/Form/RadioField';
+import { SelectField } from '../../component/atoms/Form/SelectField';
 import { Box, Stack, CircularProgress, } from '@mui/material';
-import { HistoryTable } from '../../component/HistoryTable';
+import { HistoryTable } from '../../component/atoms/HistoryTable';
 import { useEffect, useState } from 'react';
 import axios, { getApi, putApi, deleteApi, postApi } from '../../lib/axios';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -84,11 +84,11 @@ export const Top = () => {
     <Stack spacing={2} sx={{p: 4}} >
         {loading && <CustomLinearProgress />}
               <p>{user?.name}</p>
-      {/* <ul>
+      <ul>
         {data?.map((item) => (
             <li key={item.id} onClick={() => showTodo(item.id)}>{item.name}</li>
         ))}
-      </ul> */}
+      </ul>
       {/* <RadioField 
         items={["りんご","みかん","いちご"]} 
         name="fruit" 

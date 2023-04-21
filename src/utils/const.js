@@ -58,18 +58,6 @@ export const PREFECTURE_LIST = [
   { value: 47, label: '沖縄県' },
 ];
 
-export const DELIVERY_COMPANY = [
-  { value: 1, label: 'クロネコヤマト' },
-  { value: 2, label: '佐川急便' },
-  { value: 3, label: 'ゆうパック' },
-  { value: 4, label: '西濃運輸' },
-  { value: 5, label: '福山通運' },
-  { value: 6, label: '第一貨物' },
-  { value: 7, label: '久留米運送' },
-  { value: 8, label: 'トールエクスプレス' },
-  { value: 9, label: 'セイノースーパーエクスプレス' },
-  { value: 10, label: 'ヤマト以外' },
-];
 
 export const CUTOFF_TIME = [
   { value: 1, label: '1時' },

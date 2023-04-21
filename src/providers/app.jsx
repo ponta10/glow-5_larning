@@ -8,7 +8,7 @@ import { AuthProvider } from '../lib/auth';
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Alert, AlertTitle, ThemeProvider } from "@mui/material";
 import { SnackbarProvider } from "notistack";
-import { CustomButton } from "../component/CustomButton";
+import { CustomButton } from "../component/atoms/Form/CustomButton";
 import { theme } from '../component/layout/design';
 
 function ErrorFallback() {
