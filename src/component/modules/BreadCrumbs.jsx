@@ -4,9 +4,9 @@ import { Box, Typography, Breadcrumbs as MUIBreadcrumbs } from '@mui/material';
 
 export const BreadCrumbs = (props) => {
   const { links } = props;
-    const currentLink = links[links.length - 1].name;
+    const currentLink = links && links[links?.length - 1].name;
   
-    const listActiveLast = links.map((link) => (
+    const listActiveLast = links?.map((link) => (
       <div key={link.name ?? ''}>
         {link.name !== currentLink ? (
           <LinkItem href={link.href ?? ''} name={link.name ?? ''} />
@@ -29,7 +29,7 @@ export const BreadCrumbs = (props) => {
   
     return (
       <MUIBreadcrumbs
-        sx={{ mb: 2 }}
+        sx={{ mb: 2, px: 10 }}
         separator={(
           <Box
             sx={{
@@ -47,7 +47,7 @@ export const BreadCrumbs = (props) => {
 
 const LinkItem = ({ href, name }) => {
   return (
-    <NavLink to={href}>
+    <NavLink to={href} style={{ color: "#4EABBA"}}>
       {name}
     </NavLink>
   );

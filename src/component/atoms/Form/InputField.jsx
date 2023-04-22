@@ -13,6 +13,7 @@ export const InputField = ({
   registration,
   error,
   helperText,
+  InputProps,
 }) => {
   return (
       <TextField
@@ -27,6 +28,7 @@ export const InputField = ({
         {...registration}
         error={error}
         helperText={helperText}
+        InputProps={InputProps}
         sx={{
           backgroundColor: "#fff",
           "& .MuiOutlinedInput-root": {

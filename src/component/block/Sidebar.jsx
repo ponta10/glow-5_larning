@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { InputAdornment, Stack } from "@mui/material";
 import React, { useState } from "react";
 import { CustomButton } from "../atoms/Form/CustomButton";
 import { Caption } from "../atoms/Caption";
@@ -34,6 +34,9 @@ export const Sidebar = () => {
             type="number"
             name="downset"
             registration={register("downset")}
+            InputProps={{
+                endAdornment: <InputAdornment position="start">pt</InputAdornment>,
+            }}
           />
           <InputField
             placeholder="上限"
@@ -41,6 +44,9 @@ export const Sidebar = () => {
             type="number"
             name="upset"
             registration={register("upset")}
+            InputProps={{
+                endAdornment: <InputAdornment position="start">pt</InputAdornment>,
+            }}
           />
           <Caption title="カテゴリ" />
           <RadioField

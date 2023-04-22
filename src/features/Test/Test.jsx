@@ -18,6 +18,9 @@ import { Footer } from "../../component/block/Footer";
 import { MainLayout } from "../../component/layout/MainLayout";
 import { Sidebar } from "../../component/block/Sidebar";
 import { Grid } from "@mui/material";
+import { ReviewBox } from "../../component/block/ReviewBox";
+import { ContentsList } from "./ContentsList";
+import { Main } from "./Main";
 
 export const Test = () => {
   const onSubmit = async (data) => {
@@ -26,49 +29,29 @@ export const Test = () => {
 
   return (
     <MainLayout
-      links={[
-        {
-          name: "トップ",
-          href: "/app/test",
-        },
-        {
-          name: "請求一覧",
-          href: "/app/top",
-        },
-        {
-          name: "請求詳細",
-        },
-      ]}
+    //   links={[
+    //     {
+    //       name: "トップ",
+    //       href: "/app/test",
+    //     },
+    //     {
+    //       name: "請求一覧",
+    //       href: "/app/top",
+    //     },
+    //     {
+    //       name: "請求詳細",
+    //     },
+    //   ]}
     >
-      <Grid container padding={4}>
-        <Grid item xs={9}>
-            <p>aa</p>
+      <Grid container sx={{ px: 7 }}>
+        <Grid item xs={9.25}>
+          <Main />
         </Grid>
-        <Grid item xs={3}>
-        <Sidebar />
+        <Grid item xs={2.75}>
+          <Sidebar />
+          <ReviewBox />
         </Grid>
       </Grid>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p> <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p> <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
-      <p>あああ</p>
     </MainLayout>
     // <Form
     //   options={{
