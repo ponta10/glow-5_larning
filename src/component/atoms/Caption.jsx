@@ -12,6 +12,7 @@ export const Caption = (props) => {
             py: 1, 
             // width: "100%",
             backgroundColor: "#fff",
+            fontWeight: "bold",
         }} 
         variant={variant}
     >

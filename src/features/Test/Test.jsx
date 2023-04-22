@@ -21,6 +21,7 @@ import { Grid } from "@mui/material";
 import { ReviewBox } from "../../component/block/ReviewBox";
 import { ContentsList } from "./ContentsList";
 import { Main } from "./Main";
+import { Hero } from "./Hero";
 
 export const Test = () => {
   const onSubmit = async (data) => {
@@ -43,7 +44,8 @@ export const Test = () => {
     //     },
     //   ]}
     >
-      <Grid container sx={{ px: 7 }}>
+      <Hero />
+      <Grid container sx={{ px: 7,mt: 2 }}>
         <Grid item xs={9.25}>
           <Main />
         </Grid>

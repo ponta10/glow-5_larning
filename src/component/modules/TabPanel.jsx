@@ -19,37 +19,3 @@ export const TabPanel = (props) => {
     </Box>
   );
 };
-
-
-
-// function a11yProps(index) {
-//     return {
-//       id: `simple-tab-${index}`,
-//       "aria-controls": `simple-tabpanel-${index}`,
-//     };
-//   }
-//   const [value, setValue] = useState(0);
-//   const handleChange = (event, newValue) => {
-//     setValue(newValue);
-//   };  
-// <Tabs
-//           value={value}
-//           onChange={handleChange}
-//           aria-label="basic tabs example"
-//           sx={{
-//             position: "sticky",
-//             top: 0,
-//             width: "100%",
-//             zIndex: 2,
-//             backgroundColor: "gray.0",
-//           }}
-//         >
-//           <Tab label="シフト確認" {...a11yProps(0)} />
-//           <Tab label="給与計算" {...a11yProps(1)} />
-//         </Tabs>
-//         <TabPanel value={value} index={0}>
-//           {tableOpen && <ShiftTable setModalOpen={setModalOpen} />}
-//         </TabPanel>
-//         <TabPanel value={value} index={1}>
-//           {tableOpen && <SalaryTable tableOpen={tableOpen} />}
-//         </TabPanel>

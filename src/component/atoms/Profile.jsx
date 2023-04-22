@@ -6,8 +6,7 @@ export const Profile = ({ logoSrc, name }) => {
     <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
       <Avatar src={logoSrc} sx={{ boxShadow: 2 }} />
       <Typography 
-        variant="h6" 
-        component="div"
+        component="p"
       >
         {name}
       </Typography>

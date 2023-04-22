@@ -6,7 +6,7 @@ import { BreadCrumbs } from '../modules/BreadCrumbs'
 
 export const MainLayout = ({ children, links }) => {
   return (
-    <Box marginTop={10}>
+    <Box marginTop={6}>
         <Header />
         <BreadCrumbs links={links} />
         {children}

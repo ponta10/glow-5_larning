@@ -9,10 +9,18 @@ export const Main = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const tabStyle = {
+    "&.Mui-selected": {
+      color: "#4EABBA",
+    },
+    "&.Mui-focusVisible": {
+      backgroundColor: "#4EABBA",
+    },
+  };
   return (
-    <TabContext value={value}>
+    <TabContext value={String(value)}>
       <Tabs
-        value={value}
+        value={String(value)}
         onChange={handleChange}
         aria-label="basic tabs example"
         TabIndicatorProps={{
@@ -24,31 +32,19 @@ export const Main = () => {
       >
         <Tab
           label="最新のコンテンツ"
-          sx={{
-            "&.Mui-selected": {
-              color: "#4EABBA",
-            },
-            "&.Mui-focusVisible": {
-              backgroundColor: "#4EABBA",
-            },
-          }}
+          sx={tabStyle}
+          value="0"
         />
         <Tab
           label="最新のリクエスト"
-          sx={{
-            "&.Mui-selected": {
-              color: "#4EABBA",
-            },
-            "&.Mui-focusVisible": {
-              backgroundColor: "#4EABBA",
-            },
-          }}
+          sx={tabStyle}
+          value="1"
         />
       </Tabs>
-      <TabPanel value={0}>
+      <TabPanel value="0">
         <ContentsList />
       </TabPanel>
-      <TabPanel value={1}>
+      <TabPanel value="1">
         <RequestList />
       </TabPanel>
     </TabContext>

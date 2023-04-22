@@ -5,16 +5,17 @@ import { Caption } from "../atoms/Caption";
 import { InputField } from "../atoms/Form/InputField";
 import { RadioField } from "../atoms/Form/RadioField";
 import { Form } from "../atoms/Form/Form";
+import { ToggleSwitch } from "../atoms/Form/ToggleSwitch";
 
 export const Sidebar = () => {
-    const [ category, setCategory ] = useState();
+  const [category, setCategory] = useState("物品");
   const onSubmit = async (data) => {
     console.log(data);
   };
   return (
     <Form
       options={{
-        defaultValues: { category: "物品" },
+        defaultValues: { category: "物品", borrow: true },
       }}
       onSubmit={onSubmit}
     >
@@ -35,7 +36,9 @@ export const Sidebar = () => {
             name="downset"
             registration={register("downset")}
             InputProps={{
-                endAdornment: <InputAdornment position="start">pt</InputAdornment>,
+              endAdornment: (
+                <InputAdornment position="start">pt</InputAdornment>
+              ),
             }}
           />
           <InputField
@@ -45,7 +48,9 @@ export const Sidebar = () => {
             name="upset"
             registration={register("upset")}
             InputProps={{
-                endAdornment: <InputAdornment position="start">pt</InputAdornment>,
+              endAdornment: (
+                <InputAdornment position="start">pt</InputAdornment>
+              ),
             }}
           />
           <Caption title="カテゴリ" />
@@ -55,7 +60,12 @@ export const Sidebar = () => {
             control={control}
             onChange={(value) => setCategory(value)}
           />
-          {category == "物品" && <Caption title="利用状況" />}
+          {category == "物品" && (
+            <>
+              <Caption title="利用状況" />
+              <ToggleSwitch name="borrow" control={control} label="貸出可" />
+            </>
+          )}
           <CustomButton
             title="検索"
             type="submit"
