@@ -1,14 +1,15 @@
-import * as React from "react";
+import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Spinner } from "components/Elements/Spinner";
+import { Spinner } from "../component/Spinner";
 import PropTypes from "prop-types";
-// import { AuthProvider } from "lib/auth";
+import { AuthProvider } from '../lib/auth';
 import { QueryClient, QueryClientProvider } from "react-query";
-import { SubmitButton } from "components/Elements/Button/SubmitButton";
-import { Alert, AlertTitle } from "@mui/material";
+import { Alert, AlertTitle, ThemeProvider } from "@mui/material";
 import { SnackbarProvider } from "notistack";
+import { CustomButton } from "../component/atoms/Form/CustomButton";
+import { theme } from '../component/layout/design';
 
 function ErrorFallback() {
   return (
@@ -16,11 +17,10 @@ function ErrorFallback() {
       <Alert severity="error">
         <AlertTitle>エラーが発生しました。</AlertTitle>
       </Alert>
-      <SubmitButton
-        onClick={() => window.location.assign(window.location.origin)}
-      >
-        Refresh
-      </SubmitButton>
+      <CustomButton
+      title="Refresh"
+        clickEvent={() => window.location.assign(window.location.origin)}
+      />
     </div>
   );
 }
@@ -31,24 +31,28 @@ export function AppProvider(props) {
   const queryClient = new QueryClient();
 
   return (
-    <React.Suspense fallback={<Spinner />}>
+    <Suspense fallback={<Spinner />}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <HelmetProvider>
           <QueryClientProvider client={queryClient}>
+            <AuthProvider>
+              <ThemeProvider theme={theme}>
                 <SnackbarProvider
                   anchorOrigin={{
                     vertical: "top",
                     horizontal: "right",
                   }}
                   maxSnack={3}
-                  autoHideDuration={1000}
+                  autoHideDuration={2000}
                 >
                   <Router>{children}</Router>
                 </SnackbarProvider>
+              </ThemeProvider>
+            </AuthProvider>
           </QueryClientProvider>
         </HelmetProvider>
       </ErrorBoundary>
-    </React.Suspense>
+    </Suspense>
   );
 }
 

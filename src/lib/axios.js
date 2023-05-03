@@ -1,23 +1,32 @@
 import Axios from 'axios';
-
+import { STATUS_UN_AUTHORIZED } from '../utils/const';
 const axios = Axios.create();
 
-// axios.interceptors.response.use(
-//   (response) => response.data,
-//   (error) => {
-//     if (error.response?.status === STATUS_UN_AUTHORIZED) {
-//       localStorage.setItem('accessToken', '');
-//       window.location.assign(window.location.origin);
-//     }
-//     return Promise.reject(error);
-//   },
-// );
+axios.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    if (error.response?.status === STATUS_UN_AUTHORIZED) {
+      localStorage.setItem('accessToken', '');
+      window.location.assign(window.location.origin);
+    }
+    return Promise.reject(error);
+  },
+);
 
-// let accessToken = '';
+const apiClient = axios.create({
+  baseURL: 'http://localhost/api',
+});
 
-// export const setApiToken = (token) => {
-//   accessToken = token;
-// };
+const token = document.head.querySelector('meta[name="csrf-token"]');
+if (token) {
+  apiClient.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+}
+
+let accessToken = '';
+
+export const setApiToken = (token) => {
+  accessToken = token;
+};
 
 export const getApi = async (url, params) => {
   console.log(url, params);
@@ -25,9 +34,9 @@ export const getApi = async (url, params) => {
   const res = await axios.get(url, {
     // ここに「params」というキー名でセットし、クエリパラメータを指定する
     params,
-    // headers: {
-    //   Authorization: `Bearer ${accessToken}`,
-    // },
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
   });
 
   console.log('api response', res);
@@ -43,9 +52,9 @@ export const putApi = async (url, params) => {
     // ここに「params」というキー名でセットし、クエリパラメータを指定する
     params,
     {
-    //   headers: {
-    //     Authorization: `Bearer ${accessToken}`,
-    //   },
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     },
   );
 
@@ -61,9 +70,9 @@ export const postApi = (url, params) => {
     url,
     params,
     {
-    //   headers: {
-    //     Authorization: `Bearer ${accessToken}`,
-    //   },
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     },
   );
 
@@ -80,9 +89,9 @@ export const deleteApi = (url, params) => {
       url,
       params,
       {
-      //   headers: {
-      //     Authorization: `Bearer ${accessToken}`,
-      //   },
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
       },
     );
   

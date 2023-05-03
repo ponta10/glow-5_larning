@@ -1,35 +1,44 @@
 import React from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => ({
+  row: {
+      backgroundColor: "#eee",
+  },
+}));
 
 
 export const HistoryTable = () => {
+  const classes = useStyles();
+
+  const getRowClassName = (params) => {
+    return params.id % 2 === 0 ? classes.row : '';
+  };
+
     const columns = [
         { field: 'id', headerName: 'ID', width: 90 },
         {
           field: 'name',
           headerName: 'name',
-          width: 150,
-          editable: true,
+          width: 150
         },
         {
           field: 'borrowed',
           headerName: 'borrowed',
-          width: 150,
-          editable: true,
+          width: 150
         },
         {
             field: 'lending',
             headerName: 'lending',
             width: 150,
-            editable: true,
           },
         {
           field: 'age',
           headerName: 'Age',
           type: 'number',
-          width: 110,
-          editable: true,
+          width: 110
         },
       ];
       
@@ -58,8 +67,9 @@ export const HistoryTable = () => {
           },
         }}
         pageSizeOptions={[5]}
-        checkboxSelection
-        disableRowSelectionOnClick
+        // checkboxSelection
+        // disableRowSelectionOnClick
+        getRowClassName={getRowClassName}
       />
     </Box>
   )
