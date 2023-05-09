@@ -29,7 +29,7 @@ export const BreadCrumbs = (props) => {
   
     return (
       <MUIBreadcrumbs
-        sx={{ mb: 2, px: 10 }}
+        sx={{ mb: 2 }}
         separator={(
           <Box
             sx={{

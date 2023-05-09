@@ -11,7 +11,8 @@ export const CustomButton = ({ title, bgColor, color, width, type, disabled, cli
       sx={{ 
         backgroundColor: bgColor, 
         color: color,
-        with: width,
+        width: width,
+        fontWeight: "bold",
       }}>
         {title}
     </Button>

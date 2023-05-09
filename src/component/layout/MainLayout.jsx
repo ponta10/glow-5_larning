@@ -6,10 +6,12 @@ import { BreadCrumbs } from '../modules/BreadCrumbs'
 
 export const MainLayout = ({ children, links }) => {
   return (
-    <Box marginTop={6}>
+    <Box marginTop={8}>
         <Header />
+        <Box sx={{ px: 12 }}>
         <BreadCrumbs links={links} />
         {children}
+        </Box>
         <Footer />
     </Box>
   )
